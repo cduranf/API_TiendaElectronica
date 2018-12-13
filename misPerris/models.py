@@ -41,14 +41,24 @@ class Vendedor( models.Model ):
         return self.nom_vendedor
 
 class Producto( models.Model ):
+    
+    PRODUCTO = (
+        ('Celulares', 'Celulares'),
+        ('ComponectesPC', 'ComponectesPC'),
+        ('Monitores','Monitores'),
+        ('Accesorios', 'Accesorios'),
+    )   
+
+
     id = models.AutoField( primary_key = True )
+    imageUrl = models.CharField( max_length = 255, default = '' )
     nom_producto = models.CharField( max_length = 255 )
     descripcion = models.CharField( max_length = 255 )
     precio = models.CharField( max_length = 255 )
-    tipo_producto = models.CharField( max_length = 255 )
+    tipo_producto = models.CharField( max_length = 255,default= 'celulares' ,choices= PRODUCTO )
 
     def __str__( self ):
-        return self.nom_vendedor
+        return self.nom_producto
 
 
 
